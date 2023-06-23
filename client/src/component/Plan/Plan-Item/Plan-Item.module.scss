@@ -1,0 +1,60 @@
+@import "src/style/configuration";
+
+.PlanItem {
+   @extend %flex-align-justify-column;
+   gap: 28px;
+   border-radius: 10px;
+   background: var(--item-bg);
+   height: 230px;
+   width: calc(100% / 4 - 15px);
+   position: relative;
+   cursor: pointer;
+   transition: .3s;
+
+   &:hover {
+      background: var(--item-bg-hover);
+   }
+
+   .plan_name {
+      font-weight: 500;
+      font-size: 16px;
+   }
+
+   .plan_date {
+      font-size: 13px;
+      color: var(--plans-color);
+   }
+
+   .delete {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      transition: .2s;
+
+      &:hover {
+         filter: var(--icon-hover);
+         -webkit-filter: var(--icon-hover);
+      }
+   }
+
+   img {
+      height: 90px;
+   }
+}
+
+@media screen and (max-width: 1300px) {
+   .PlanItem {
+      width: calc(100% / 2 - 15px);
+   }
+}
+
+@media screen and (max-width: 900px) {
+   .PlanItem {
+      width: 100%;
+   }
+}
+
+

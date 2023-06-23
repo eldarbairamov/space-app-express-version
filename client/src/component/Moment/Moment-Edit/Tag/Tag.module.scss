@@ -1,0 +1,21 @@
+@import "src/style/configuration";
+
+.Tag {
+   @extend %flex-align-justify;
+   background: #7274d7;
+   border-radius: 5px;
+   position: absolute;
+   bottom: 25px;
+   left: 25px;
+
+   .tag {
+      color: white;
+      width: 60px;
+      background: transparent;
+
+      &::placeholder {
+         color: #cacaca;
+      }
+   }
+
+}

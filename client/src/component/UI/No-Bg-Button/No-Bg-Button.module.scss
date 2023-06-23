@@ -1,0 +1,28 @@
+@import "src/style/configuration";
+
+.NoBgButton {
+   font-weight: 500;
+   background: transparent;
+   border: none;
+   cursor: pointer;
+   transition: .3s;
+   color: var(--main-font);
+}
+
+.NoBgButton[data-hover='moment'] {
+   &:hover {
+      color: var(--moments-color);
+   }
+}
+
+.NoBgButton[data-hover='plan'] {
+   &:hover {
+      color: var(--plans-color);
+   }
+}
+
+.NoBgButton[data-hover='notes'] {
+   &:hover {
+      color: var(--notes-color);
+   }
+}

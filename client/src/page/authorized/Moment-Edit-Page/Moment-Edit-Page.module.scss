@@ -1,0 +1,70 @@
+@import "src/style/configuration";
+
+.MomentEditPage {
+   @extend %flex-align-justify-column;
+   transition: width $transition, height $transition;
+   width: 60vw;
+   height: calc(100vh - 170px);
+   background: var(--second-bg);
+   border-radius: 10px;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   position: relative;
+   padding: 30px;
+
+   input {
+      color: var(--button-font);
+      border-radius: 5px;
+      background: var(--button-bg);
+      padding: 10px;
+      border: none;
+      outline: none;
+      text-align: center;
+      cursor: pointer;
+   }
+
+   .moment {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: .5s;
+   }
+
+   .title_and_back {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      gap: 10px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+   }
+}
+
+@media screen and (max-width: 1000px) {
+   .MomentEditPage {
+      width: 85vw;
+   }
+}
+
+@media screen and (max-height: 800px) {
+   .MomentEditPage {
+      margin: 50px 0 50px 0;
+      height: 0;
+   }
+}
+
+@media screen and (max-width: 650px) {
+   .MomentEditPage {
+      width: 450px;
+      height: 600px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .MomentEditPage {
+      width: 95vw;
+   }
+}
+

@@ -1,0 +1,35 @@
+@import "src/style/configuration";
+
+.TextArea {
+   @extend %flex-align-justify;
+   width: 100%;
+   height: calc(100% - 50px);
+
+   textarea {
+      background: transparent;
+
+      font-size: 15px;
+      width: 95%;
+      height: 95%;
+      border: 0;
+      resize: none;
+      outline: none;
+      color: var(--main-font);
+      letter-spacing: -0.5px;
+
+      &::placeholder {
+         font-size: 15px;
+         letter-spacing: -0.5px;
+         color: var(--second-font);
+      }
+   }
+
+   textarea[data-font='Caveat'] {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+
+      &::placeholder {
+         font-size: 21px;
+      }
+   }
+}

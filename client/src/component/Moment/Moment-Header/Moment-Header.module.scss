@@ -1,0 +1,45 @@
+@import "src/style/configuration";
+
+.MomentHeader {
+   @extend %flex-align-justify;
+   gap: 10px;
+   height: 50px;
+   width: 100%;
+   position: relative;
+   border-bottom: 2px solid var(--decorative-grey);
+   transition: $transition;
+
+   .how_it_works {
+      position: absolute;
+      cursor: pointer;
+      left: 50px;
+      font-size: 15px;
+      font-weight: 500;
+   }
+
+   .select_wrapper {
+      position: absolute;
+      right: 50px;
+   }
+
+   .save_moment {
+      @extend %flex-align-justify;
+      gap: 10px;
+      padding: 15px;
+
+      img {
+         height: 30px;
+      }
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .MomentHeader {
+      gap: 80px;
+
+      .select_wrapper {
+         position: static;
+         right: 50px;
+      }
+   }
+}

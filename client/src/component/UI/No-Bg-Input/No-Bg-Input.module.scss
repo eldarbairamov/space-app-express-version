@@ -1,0 +1,15 @@
+@import "src/style/configuration";
+
+.NoBgInput {
+   text-align: center;
+   outline: none;
+   border: none;
+   background: none;
+   color: var(--main-font);
+   transition: $transition;
+
+   &::placeholder {
+      color: var(--second-font);
+      font-weight: normal;
+   }
+}

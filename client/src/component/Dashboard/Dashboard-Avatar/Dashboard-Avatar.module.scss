@@ -1,0 +1,63 @@
+@import "src/style/configuration.scss";
+
+.DashboardAvatar {
+   @extend %flex-align-justify;
+   min-height: 250px;
+   margin-top: 30px;
+
+   img {
+      width: 550px;
+   }
+
+   .avatar {
+      @extend %flex-align-justify;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: #9d9d9d 5px solid;
+   }
+
+   .no_avatar {
+      width: 350px;
+      border: #9d9d9d 5px solid;
+      border-radius: 50%;
+   }
+
+}
+
+@media screen and (max-width: 600px) {
+   .DashboardAvatar {
+      img {
+         width: 300px;
+      }
+
+      .avatar {
+         width: 250px;
+         height: 250px;
+      }
+
+      .no_avatar {
+         width: 250px;
+      }
+   }
+}
+
+@media screen and (max-height: 1000px) {
+   .DashboardAvatar {
+      img {
+         width: 400px;
+      }
+
+      .avatar {
+         width: 250px;
+         height: 250px;
+      }
+
+      .no_avatar {
+         width: 250px;
+      }
+   }
+}
+
+

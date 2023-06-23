@@ -1,0 +1,56 @@
+@import "src/style/configuration";
+
+.AppLogo {
+   @extend %flex-align;
+   cursor: default;
+   gap: 8px;
+   transition: $transition;
+
+   p {
+      font-weight: 600;
+      font-size: 28px;
+      animation: color-animation 4s linear infinite;
+   }
+
+   .first {
+      --color-1: #DF8453;
+      --color-2: #3D8DAE;
+      --color-3: #E4A9A8;
+   }
+
+   .second {
+      --color-1: #DBAD4A;
+      --color-2: #ACCFCB;
+      --color-3: #63a1ba;
+   }
+
+   .third {
+      --color-1: #7274d7;
+      --color-2: #E4A9A8;
+      --color-3: #ACCFCB;
+   }
+
+   @keyframes color-animation {
+      0% {
+         color: var(--color-1)
+      }
+      32% {
+         color: var(--color-1)
+      }
+      33% {
+         color: var(--color-2)
+      }
+      65% {
+         color: var(--color-2)
+      }
+      66% {
+         color: var(--color-3)
+      }
+      99% {
+         color: var(--color-3)
+      }
+      100% {
+         color: var(--color-1)
+      }
+   }
+}

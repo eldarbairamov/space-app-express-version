@@ -1,0 +1,30 @@
+@import "src/style/configuration";
+
+.MomentList {
+   overflow-y: scroll;
+   height: calc(100% - 50px);
+   width: 100%;
+
+   .moment_list {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 20px;
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+   }
+}
+
+.no_moments_wrapper {
+   @extend %flex-align-justify-column;
+   gap: 10px;
+   width: 100%;
+   height: 100%;
+
+   p {
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+   }
+}

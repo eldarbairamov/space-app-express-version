@@ -1,0 +1,24 @@
+@import "src/style/configuration";
+
+.TaskAdd {
+   @extend %flex-align-justify;
+   height: 100px;
+   width: 100%;
+
+   .task_add {
+      @extend %flex-align-justify;
+      gap: 10px;
+      height: 60px;
+      width: 280px;
+      transition: $transition;
+
+      img {
+         height: 25px;
+         cursor: pointer;
+      }
+
+      img[data-disable=''] {
+         cursor: default;
+      }
+   }
+}

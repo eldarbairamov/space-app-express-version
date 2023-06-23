@@ -1,0 +1,21 @@
+@import "src/style/configuration";
+
+.Button {
+   padding: 10px 20px;
+   border: none;
+   cursor: pointer;
+   background: var(--button-bg);
+   color: white;
+   border-radius: 5px;
+   transition: $transition;
+
+   &:hover {
+      background: #3D8DAE;
+   }
+
+   &:disabled {
+      background: var(--button-disbled-bg);
+      cursor: inherit;
+   }
+
+}

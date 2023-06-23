@@ -1,0 +1,41 @@
+@import "src/style/configuration";
+
+.TasksPage {
+   @extend %flex-align-justify-column;
+   width: 50vw;
+   background: var(--second-bg);
+   border-radius: 10px;
+   height: calc(100vh - 170px);
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   transition: $transition;
+
+   ::-webkit-scrollbar-track {
+      background: transparent;
+   }
+}
+
+@media screen and (max-height: 800px) {
+   .TasksPage {
+      height: 800px;
+      margin: 50px 0 50px 0;
+   }
+}
+
+@media screen and (max-width: 1200px) {
+   .TasksPage {
+      width: 85vw;
+   }
+}
+
+
+@media screen and (max-width: 550px) {
+   .TasksPage {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .TasksPage {
+      width: 95vw;
+   }
+}

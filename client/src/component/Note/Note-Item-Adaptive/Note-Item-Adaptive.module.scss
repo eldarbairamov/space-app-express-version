@@ -1,0 +1,81 @@
+@import "src/style/configuration";
+
+.NoteItemAdaptive {
+   @extend %flex-align;
+   padding: 20px;
+   background: var(--item-bg);
+   border-radius: 10px;
+   cursor: pointer;
+   position: relative;
+   overflow: hidden;
+   background: var(--item-bg);
+   height: 120px;
+   width: calc(100% / 2 - 10px);
+   transition: .3s;
+
+   &:hover {
+      background: var(--item-bg-hover);
+   }
+
+   .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 80%;
+      height: 100%;
+
+      .note_title {
+         font-weight: 500;
+         text-align: left;
+         width: 85%;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+      }
+
+      .note_body {
+         font-size: 14px;
+         text-align: left;
+
+         p {
+            color: var(--second-font);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+         }
+      }
+
+      .note_date {
+         font-size: 13px;
+         color: #d78052;
+         font-weight: 500;
+         text-align: left;
+      }
+   }
+
+   .right {
+      @extend %flex-align;
+      justify-content: flex-end;
+      width: 20%;
+      height: 100%;
+
+      .delete {
+         cursor: pointer;
+         width: 25px;
+         height: 25px;
+         transition: .2s;
+
+         &:hover {
+            filter: var(--icon-hover);
+            -webkit-filter: var(--icon-hover);
+         }
+      }
+   }
+
+}
+
+@media screen and (max-width: 600px) {
+   .NoteItemAdaptive {
+      width: 100%;
+   }
+}

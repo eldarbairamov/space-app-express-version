@@ -1,0 +1,31 @@
+@import "src/style/configuration";
+
+.PlanList {
+   overflow-y: scroll;
+   height: calc(100% - 50px);
+   width: 100%;
+   padding: 20px;
+
+   .plan_list {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 20px;
+      width: 100%;
+      position: relative;
+      margin: 0 auto;
+   }
+}
+
+.no_plans_wrapper {
+   @extend %flex-align-justify-column;
+   height: 100%;
+   width: 100%;
+   gap: 10px;
+
+   p {
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+   }
+}
+

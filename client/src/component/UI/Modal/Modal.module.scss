@@ -1,0 +1,41 @@
+@import "src/style/configuration";
+
+.Modal {
+   position: absolute;
+   top: 0;
+   z-index: 1;
+
+   .overlay {
+      @extend %flex-align-justify;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.48);
+      // background: var(--main-bg);
+   }
+
+   .content {
+      @extend %flex-align-justify-column;
+      gap: 50px;
+      padding: 40px;
+      width: 500px;
+      text-align: center;
+      border-radius: 15px;
+      z-index: 2;
+      color: var(--main-font);
+   }
+
+   .content[data-bg=true] {
+      background: var(--second-bg);
+   }
+
+}
+
+
+
+@media screen and (max-width: 500px) {
+   .Modal {
+      .content {
+         width: 90vw;
+      }
+   }
+}

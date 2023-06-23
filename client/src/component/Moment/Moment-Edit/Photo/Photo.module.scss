@@ -1,0 +1,51 @@
+@import "src/style/configuration";
+
+.Photo {
+   @extend %flex-align-justify;
+   background: var(--item-bg);
+   height: 100%;
+   width: 100%;
+   position: relative;
+
+   .upload_photo {
+      display: none;
+   }
+
+   .photo_background {
+      position: absolute;
+      width: 1800px;
+      filter: blur(10px) contrast(80%) brightness(80%);
+      -webkit-filter: blur(10px) contrast(80%) brightness(80%);
+   }
+
+   .photo_exist {
+      width: 450px;
+      filter: contrast(90%);
+      -webkit-filter: contrast(90%);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: $transition;
+   }
+
+   .no_photo {
+      position: absolute;
+      width: 100px;
+      cursor: pointer;
+   }
+}
+
+@media screen and (max-width: 650px) {
+   .Photo {
+      .photo_exist {
+         width: 120%;
+      }
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .Photo {
+      .photo_exist {
+         width: 120%;
+      }
+   }
+}

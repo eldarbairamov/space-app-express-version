@@ -1,0 +1,43 @@
+@import "src/style/configuration";
+
+.BurgerNavbar {
+   @extend %flex-align-justify;
+   height: 70px;
+   width: 85vw;
+   margin: 0 auto;
+   background: var(--second-bg);
+   border-radius: 0 0 10px 10px;
+   position: relative;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   transition: $transition;
+
+   .menu {
+      display: flex;
+      gap: 20px;
+      position: absolute;
+      right: 35px;
+   }
+
+   img {
+      transition: .2s;
+      cursor: pointer;
+
+      &:hover {
+         filter: var(--icon-hover);
+         -webkit-filter: var(--icon-hover);
+      }
+   }
+
+}
+
+@media screen and (max-width: 550px) {
+   .BurgerNavbar {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .BurgerNavbar {
+      width: 95vw;
+   }
+}

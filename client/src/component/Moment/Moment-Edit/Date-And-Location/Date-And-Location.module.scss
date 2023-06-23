@@ -1,0 +1,23 @@
+@import "src/style/configuration";
+
+.DateAndLocation {
+   @extend %flex-align-justify-column;
+   align-items: end;
+   gap: 10px;
+   position: absolute;
+   bottom: 25px;
+   right: 25px;
+
+   .date {
+      width: 120px;
+   }
+
+   .date[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+   }
+
+   .location {
+      width: 120px;
+   }
+
+}

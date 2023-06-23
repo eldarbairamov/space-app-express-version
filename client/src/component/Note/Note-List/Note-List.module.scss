@@ -1,0 +1,23 @@
+@import "src/style/configuration";
+
+.NoteList {
+   width: 100%;
+   height: calc(100% - 100px);
+   overflow-y: scroll;
+
+   .note_list {
+      display: flex;
+      justify-content: start;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      width: 100%;
+      padding: 20px;
+   }
+}
+
+.no_notes_wrapper {
+   @extend %flex-align-justify;
+   height: 100%;
+   width: 100%;
+}

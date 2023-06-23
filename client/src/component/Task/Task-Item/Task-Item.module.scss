@@ -1,0 +1,54 @@
+@import "src/style/configuration";
+
+.TaskItem {
+   @extend %flex-align-justify;
+   padding: 20px 20px;
+   background: var(--task-item-bg);
+   margin-bottom: 20px;
+   border-radius: 10px;
+   gap: 15px;
+   transition: $transition;
+
+   .task_status {
+      @extend %flex-align-justify;
+      width: 15%;
+      height: 100%;
+
+      img {
+         height: 25px;
+         left: 30px;
+      }
+   }
+
+   .task_title {
+      @extend %flex-align-justify;
+      overflow-wrap: break-word;
+
+      p {
+         width: 280px;
+      }
+   }
+
+   .delete {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      color: var(--main-font);
+
+      &:hover {
+         filter: var(--icon-hover);
+         -webkit-filter: var(--icon-hover);
+      }
+   }
+}
+@media screen and (max-width: 499px) {
+   .TaskItem {
+      width: 90%;
+
+      .task_title {
+         p {
+            width: 200px;
+         }
+      }
+   }
+}

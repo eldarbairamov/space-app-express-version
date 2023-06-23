@@ -1,0 +1,39 @@
+{
+   "name": "frontend-react-vite",
+   "version": "1.0.0",
+   "description": "Final fullstack project for Okten School",
+   "author": "Eldar Bayramov",
+   "private": true,
+   "type": "module",
+   "scripts": {
+      "dev": "vite",
+      "build": "tsc && vite build",
+      "preview": "vite preview"
+   },
+   "dependencies": {
+      "@ant-design/icons": "^5.0.0",
+      "@hookform/resolvers": "^2.9.11",
+      "@reduxjs/toolkit": "^1.9.3",
+      "antd": "^5.3.1",
+      "axios": "^1.2.2",
+      "framer-motion": "^10.2.5",
+      "joi": "^17.8.3",
+      "moment": "^2.29.4",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-redux": "^8.0.5",
+      "react-router": "6.4.0",
+      "react-router-dom": "6.4.0",
+      "sass": "^1.59.2",
+      "uuid": "^9.0.0"
+   },
+   "devDependencies": {
+      "@types/react": "^18.0.28",
+      "@types/react-dom": "^18.0.11",
+      "@types/react-redux": "^7.1.25",
+      "@types/uuid": "^9.0.1",
+      "@vitejs/plugin-react": "^3.1.0",
+      "typescript": "^4.9.3",
+      "vite": "^4.2.1"
+   }
+}

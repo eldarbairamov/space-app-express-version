@@ -1,0 +1,2847 @@
+{
+   "openapi": "3.0.0",
+   "info": {
+      "title": "Space App",
+      "description": "Final fullstack project for Okten School",
+      "version": "1.0.0"
+   },
+   "servers": [
+      {
+         "url": "http://localhost:5400/api",
+         "description": "Express"
+      }
+   ],
+   "paths": {
+      "/auth/logout": {
+         "get": {
+            "summary": "logout",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "logout",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/auth/registration": {
+         "post": {
+            "summary": "registration",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "registration",
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "username": {
+                              "type": "string",
+                              "example": "john_doe123",
+                              "required": true
+                           },
+                           "email": {
+                              "type": "string",
+                              "example": "john_doe@gmail.com",
+                              "required": true
+                           },
+                           "password": {
+                              "type": "string",
+                              "example": 123456,
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "User account was created",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "message": {
+                                 "type": "string",
+                                 "example": "Success"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "409": {
+                  "description": "Conflict",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 409
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "This email is already in use"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/auth/activation": {
+         "post": {
+            "summary": "activation",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "activation",
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "activationCode": {
+                              "type": "string",
+                              "example": "ca6e6401-3561-4b5c-9748-bd0b90ea22ce",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 401
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "Activation code is not valid"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/auth/login": {
+         "post": {
+            "summary": "login",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "login",
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "email": {
+                              "type": "string",
+                              "example": "john_doe@gmail.com",
+                              "required": true
+                           },
+                           "password": {
+                              "type": "string",
+                              "example": 123456,
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "Access tokens was created",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "username": {
+                                 "type": "string",
+                                 "example": "john_doe"
+                              },
+                              "accessToken": {
+                                 "type": "string",
+                                 "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZlMDhhMDA0MDNhMGY4YzZkZTVjYjciLCJpYXQiOjE2Nzc1OTM2ODEsImV4cCI6MTY3NzY4MDA4MX0.pIYLd7qxSEiMP9i4Wk0IulhQjxBd9y4MlwCGq0JUbAU"
+                              },
+                              "refreshToken": {
+                                 "type": "string",
+                                 "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZlMDhhMDA0MDNhMGY4YzZkZTVjYjciLCJpYXQiOjE2Nzc1OTM2ODEsImV4cCI6MTY3ODE5ODQ4MX0.zBfsKLwq5gL3lfW9tabbp32RDjIA82k9rkufVWvDVc4"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 401
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "Wrong email or password"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "403": {
+                  "description": "Forbidden",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 403
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "Account is not activated"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/auth/password_forgot": {
+         "post": {
+            "summary": "forgot password",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "forgotPassword",
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "email": {
+                              "type": "string",
+                              "example": "john_doe@gmail.com",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 401
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "User is not found"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/auth/refresh": {
+         "post": {
+            "summary": "refresh tokes",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "refreshTokens",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "refreshToken": {
+                              "type": "string",
+                              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZlMDhhMDA0MDNhMGY4YzZkZTVjYjciLCJpYXQiOjE2Nzc1OTM2ODEsImV4cCI6MTY3ODE5ODQ4MX0.zBfsKLwq5gL3lfW9tabbp32RDjIA82k9rkufVWvDVc4",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "Access tokens was refreshed",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "accessToken": {
+                                 "type": "string",
+                                 "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZlMDhhMDA0MDNhMGY4YzZkZTVjYjciLCJpYXQiOjE2Nzc1OTM2ODEsImV4cCI6MTY3NzY4MDA4MX0.pIYLd7qxSEiMP9i4Wk0IulhQjxBd9y4MlwCGq0JUbAU"
+                              },
+                              "refreshToken": {
+                                 "type": "string",
+                                 "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZlMDhhMDA0MDNhMGY4YzZkZTVjYjciLCJpYXQiOjE2Nzc1OTM2ODEsImV4cCI6MTY3ODE5ODQ4MX0.zBfsKLwq5gL3lfW9tabbp32RDjIA82k9rkufVWvDVc4"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/auth/password_reset": {
+         "patch": {
+            "summary": "reset password",
+            "tags": [
+               "Auth"
+            ],
+            "operationId": "resetPassword",
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "password": {
+                              "type": "string",
+                              "example": 123456,
+                              "required": true
+                           },
+                           "resetPasswordToken": {
+                              "type": "string",
+                              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZlMDhhMDA0MDNhMGY4YzZkZTVjYjciLCJpYXQiOjE2Nzc1OTM3NzYsImV4cCI6MTY3NzY4MDE3Nn0.WqHjhJFiTKpK_GvVW8V0e_drOukdQG0DDVZPkrKB62E",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user": {
+         "get": {
+            "summary": "get user info",
+            "tags": [
+               "User"
+            ],
+            "operationId": "getUserInfo",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/User"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user/email_change": {
+         "post": {
+            "summary": "change email request",
+            "tags": [
+               "User"
+            ],
+            "operationId": "changeEmailReq",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "email": {
+                              "type": "string",
+                              "example": "johndoe@gmail.com",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user/profile_update": {
+         "patch": {
+            "summary": "update profile",
+            "tags": [
+               "User"
+            ],
+            "operationId": "updateProfile",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "name": {
+                              "type": "number",
+                              "example": "John"
+                           },
+                           "surname": {
+                              "type": "string",
+                              "example": "Doe"
+                           },
+                           "username": {
+                              "type": "string",
+                              "example": "johnny_mnemonick"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "name": {
+                                 "type": "number",
+                                 "example": "John"
+                              },
+                              "surname": {
+                                 "type": "string",
+                                 "example": "Doe"
+                              },
+                              "username": {
+                                 "type": "string",
+                                 "example": "johnny_mnemonick"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user/email_new": {
+         "patch": {
+            "summary": "change email accept",
+            "tags": [
+               "User"
+            ],
+            "operationId": "changeEmailAccept",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "confirmationToken": {
+                              "type": "string",
+                              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2RmZTA3Nzc0NjNjYjhlODE1NzUyODciLCJlbWFpbCI6ImVsZGFyaW8uYmF5cmFtb3ZAZ21haWwuY29tIiwiaWF0IjoxNjc1NjE2OTkzLCJleHAiOjE2NzU3MDMzOTN9.Mg7ahfZrBwUmqaZLqE4CWR1ALvPqYHmusf10IvKzzi4",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user/password_new": {
+         "patch": {
+            "summary": "change password",
+            "tags": [
+               "User"
+            ],
+            "operationId": "changePassword",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "currentPassword": {
+                              "type": "string",
+                              "example": "currpass1",
+                              "required": true
+                           },
+                           "newPassword": {
+                              "type": "string",
+                              "example": "newpass2",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user/avatar_upload": {
+         "patch": {
+            "summary": "upload avatar",
+            "tags": [
+               "User"
+            ],
+            "operationId": "uploadAvatar",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "multipart/form-data": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "avatar": {
+                              "type": "string",
+                              "format": "base64",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "image": {
+                                 "type": "string",
+                                 "example": "1677531282980.jpg"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "413": {
+                  "description": "File size error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 413
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "File size must be less than 10 mb"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "File type error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 422
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "Invalid file type"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/user/avatar_delete": {
+         "patch": {
+            "summary": "send file name and delete avatar",
+            "tags": [
+               "User"
+            ],
+            "operationId": "deleteAvatar",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "fileName": {
+                              "type": "string",
+                              "example": "1675615755215.jpg",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/notes": {
+         "get": {
+            "summary": "get all notes",
+            "tags": [
+               "Notes"
+            ],
+            "operationId": "getAllNotes",
+            "parameters": [
+               {
+                  "in": "query",
+                  "name": "searchKey",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Keyword for searching"
+               },
+               {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Notes limit"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Notes"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/notes/add": {
+         "post": {
+            "summary": "add note",
+            "tags": [
+               "Notes"
+            ],
+            "operationId": "addNote",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "201": {
+                  "description": "New note was created",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Note"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/notes/{noteId}": {
+         "put": {
+            "summary": "update note by id",
+            "tags": [
+               "Notes"
+            ],
+            "operationId": "updateNoteById",
+            "parameters": [
+               {
+                  "name": "noteId",
+                  "in": "path",
+                  "required": true,
+                  "description": "note id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "title": {
+                              "type": "string",
+                              "example": "Phasellus",
+                              "required": false
+                           },
+                           "body": {
+                              "type": "string",
+                              "example": "Suspendisse ornare erat nec porttitor accumsan. Cras urna tellus, mattis in dui vel, fermentum tempus tortor. Aenean viverra ac augue non molestie. Phasellus id dapibus tellus. Vivamus venenatis nisi ac urna sollicitudin, at vehicula tellus tempus.",
+                              "required": false
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "delete": {
+            "summary": "delete note by id",
+            "tags": [
+               "Notes"
+            ],
+            "operationId": "deleteNoteById",
+            "parameters": [
+               {
+                  "in": "query",
+                  "name": "searchKey",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Keyword for searching"
+               },
+               {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Notes limit"
+               },
+               {
+                  "name": "noteId",
+                  "in": "path",
+                  "required": true,
+                  "description": "note id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Notes"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "get": {
+            "summary": "get note by id",
+            "tags": [
+               "Notes"
+            ],
+            "operationId": "getNoteById",
+            "parameters": [
+               {
+                  "name": "noteId",
+                  "in": "path",
+                  "required": true,
+                  "description": "note id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Note"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+
+      "/plans": {
+         "get": {
+            "summary": "get all plans",
+            "tags": [
+               "Plans"
+            ],
+            "operationId": "getAllPlans",
+            "parameters": [
+               {
+                  "in": "query",
+                  "name": "searchKey",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Keyword for searching"
+               },
+               {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Notes limit"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Plans"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/plans/add": {
+         "post": {
+            "summary": "add plan",
+            "tags": [
+               "Plans"
+            ],
+            "operationId": "addPlan",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "201": {
+                  "description": "New plan was created",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Plan"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/plans/{planId}": {
+         "get": {
+            "summary": "get plan by id",
+            "tags": [
+               "Plans"
+            ],
+            "operationId": "getPlanById",
+            "parameters": [
+               {
+                  "name": "planId",
+                  "in": "path",
+                  "required": true,
+                  "description": "plan id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Plan"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "put": {
+            "summary": "update plan by id",
+            "tags": [
+               "Plans"
+            ],
+            "operationId": "updatePlanById",
+            "parameters": [
+               {
+                  "name": "planId",
+                  "in": "path",
+                  "required": true,
+                  "description": "plan id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "title": {
+                              "type": "string",
+                              "example": "English Plan",
+                              "required": false
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "delete": {
+            "summary": "delete plan by id",
+            "tags": [
+               "Plans"
+            ],
+            "operationId": "deletePlanById",
+            "parameters": [
+               {
+                  "in": "query",
+                  "name": "searchKey",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Keyword for searching"
+               },
+               {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Plans limit"
+               },
+               {
+                  "name": "planId",
+                  "in": "path",
+                  "required": true,
+                  "description": "plan id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Plans"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/tasks": {
+         "get": {
+            "summary": "get all tasks",
+            "tags": [
+               "Tasks"
+            ],
+            "operationId": "getAllTasks",
+            "parameters": [
+               {
+                  "in": "query",
+                  "name": "planId",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "plan id"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Tasks"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Default error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/tasks/add": {
+         "post": {
+            "summary": "add task",
+            "tags": [
+               "Tasks"
+            ],
+            "operationId": "addTask",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "title": {
+                              "type": "string",
+                              "example": "Project",
+                              "required": true
+                           },
+                           "planId": {
+                              "type": "string",
+                              "example": "63ffca12826b87decc6fee24",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "201": {
+                  "description": "New task was created",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Task"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Default error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/tasks/{taskId}": {
+         "patch": {
+            "summary": "update task by id",
+            "tags": [
+               "Tasks"
+            ],
+            "operationId": "updateTaskById",
+            "parameters": [
+               {
+                  "name": "taskId",
+                  "in": "path",
+                  "required": true,
+                  "description": "task id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "isCompleted": {
+                              "type": "boolean",
+                              "example": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "delete": {
+            "summary": "delete task by id",
+            "tags": [
+               "Tasks"
+            ],
+            "operationId": "deleteTaskById",
+            "parameters": [
+               {
+                  "name": "taskId",
+                  "in": "path",
+                  "required": true,
+                  "description": "task id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/moments": {
+         "get": {
+            "summary": "get all moments",
+            "tags": [
+               "Moments"
+            ],
+            "operationId": "getAllMoments",
+            "parameters": [
+               {
+                  "in": "query",
+                  "name": "searchKey",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Keyword for searching"
+               },
+               {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "description": "Notes limit"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Moments"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/moments/add": {
+         "post": {
+            "summary": "add moment",
+            "tags": [
+               "Moments"
+            ],
+            "operationId": "addMoment",
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "201": {
+                  "description": "New moment was created",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Moment"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/moments/{momentId}": {
+         "get": {
+            "summary": "get moment by id",
+            "tags": [
+               "Moments"
+            ],
+            "operationId": "getMomentById",
+            "parameters": [
+               {
+                  "name": "momentId",
+                  "in": "path",
+                  "required": true,
+                  "description": "moment id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Moment"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "patch": {
+            "summary": "update moment by id",
+            "tags": [
+               "Moments"
+            ],
+            "operationId": "updateMomentById",
+            "parameters": [
+               {
+                  "name": "momentId",
+                  "in": "path",
+                  "required": true,
+                  "description": "moment id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "title": {
+                              "type": "string",
+                              "example": "Dubai morning",
+                              "required": true
+                           },
+                           "date": {
+                              "type": "number",
+                              "example": 1677517089217,
+                              "required": true
+                           },
+                           "location": {
+                              "type": "string",
+                              "example": "Dubai",
+                              "required": true
+                           },
+                           "tag": {
+                              "type": "string",
+                              "example": "family",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         },
+         "delete": {
+            "summary": "delete moment by id",
+            "tags": [
+               "Moments"
+            ],
+            "operationId": "deleteMomentById",
+            "parameters": [
+               {
+                  "name": "momentId",
+                  "in": "path",
+                  "required": true,
+                  "description": "moment id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/Success"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/moments/{momentId}/photo_upload": {
+         "patch": {
+            "summary": "upload photo",
+            "tags": [
+               "Moments"
+            ],
+            "operationId": "uploadPhoto",
+            "parameters": [
+               {
+                  "name": "momentId",
+                  "in": "path",
+                  "required": true,
+                  "description": "moment id",
+                  "schema": {
+                     "type": "string"
+                  },
+                  "example": "63dfe16eda233c96fc6e2604"
+               }
+            ],
+            "security": [
+               {
+                  "Authorization": []
+               }
+            ],
+            "requestBody": {
+               "required": true,
+               "content": {
+                  "multipart/form-data": {
+                     "schema": {
+                        "type": "object",
+                        "properties": {
+                           "photo": {
+                              "type": "string",
+                              "format": "base64",
+                              "required": true
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Success",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "image": {
+                                 "type": "string",
+                                 "example": "1677521282980.jpg"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Invalid ObjectID",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/ObjectIdError"
+                        }
+                     }
+                  }
+               },
+               "401": {
+                  "description": "Unauthorized",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/UnauthorizedError"
+                        }
+                     }
+                  }
+               },
+               "404": {
+                  "description": "Not found",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/NotExistError"
+                        }
+                     }
+                  }
+               },
+               "413": {
+                  "description": "File size error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 413
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "File size must be less than 10 mb"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "File type error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "properties": {
+                              "statusCode": {
+                                 "type": "number",
+                                 "example": 422
+                              },
+                              "message": {
+                                 "type": "string",
+                                 "example": "Invalid file type"
+                              }
+                           }
+                        }
+                     }
+                  }
+               },
+               "default": {
+                  "description": "Unexpected errors",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/DefaultError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "securitySchemes": {
+         "Authorization": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+         }
+      },
+      "schemas": {
+         "UnauthorizedError": {
+            "type": "object",
+            "required": [
+               "statusCode",
+               "message"
+            ],
+            "properties": {
+               "statusCode": {
+                  "type": "number",
+                  "example": 401
+               },
+               "message": {
+                  "type": "string",
+                  "example": "Invalid or expired token"
+               }
+            }
+         },
+         "ObjectIdError": {
+            "type": "object",
+            "required": [
+               "statusCode",
+               "message"
+            ],
+            "properties": {
+               "statusCode": {
+                  "type": "number",
+                  "example": 400
+               },
+               "message": {
+                  "type": "string",
+                  "example": "Object ID is not valid"
+               }
+            }
+         },
+         "NotExistError": {
+            "type": "object",
+            "required": [
+               "statusCode",
+               "message"
+            ],
+            "properties": {
+               "statusCode": {
+                  "type": "number",
+                  "example": 404
+               },
+               "message": {
+                  "type": "string",
+                  "example": "Object does not exist"
+               }
+            }
+         },
+         "DefaultError": {
+            "type": "object",
+            "properties": {
+               "statusCode": {
+                  "type": "number",
+                  "example": 500
+               },
+               "message": {
+                  "type": "string",
+                  "example": "Error message"
+               }
+            }
+         },
+         "Success": {
+            "type": "object",
+            "properties": {
+               "message": {
+                  "type": "string",
+                  "example": "Success"
+               }
+            }
+         },
+         "Note": {
+            "type": "object",
+            "required": [
+               "title",
+               "body"
+            ],
+            "properties": {
+               "id": {
+                  "type": "string",
+                  "example": "63dfe16eda233c96fc6e2604"
+               },
+               "title": {
+                  "type": "string",
+                  "example": "Vivamus"
+               },
+               "body": {
+                  "type": "string",
+                  "example": "Suspendisse ornare erat nec porttitor accumsan. Cras urna tellus, mattis in dui vel, fermentum tempus tortor. Aenean viverra ac augue non molestie. Phasellus id dapibus tellus. Vivamus venenatis nisi ac urna sollicitudin, at vehicula tellus tempus."
+               },
+               "lastModified": {
+                  "type": "number",
+                  "example": 1677440880312
+               }
+            }
+         },
+         "Notes": {
+            "type": "object",
+            "properties": {
+               "data": {
+                  "type": "array",
+                  "items": {
+                     "$ref": "#/components/schemas/Note"
+                  }
+               },
+               "count": {
+                  "type": "number",
+                  "example": 30
+               }
+            }
+         },
+         "Task": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string",
+                  "example": "63dfe16eda233c96fc6e2604"
+               },
+               "title": {
+                  "type": "string",
+                  "example": "Learn English"
+               },
+               "isCompleted": {
+                  "type": "boolean",
+                  "example": false
+               }
+            }
+         },
+         "Tasks": {
+            "type": "array",
+            "items": {
+               "$ref": "#/components/schemas/Task"
+            }
+         },
+         "Plan": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string",
+                  "example": "63dfe16eda233c96fc6e2604"
+               },
+               "title": {
+                  "type": "string",
+                  "example": "Training"
+               },
+               "lastModified": {
+                  "type": "number",
+                  "example": 1677765747660
+               }
+            }
+         },
+         "Plans": {
+            "type": "object",
+            "properties": {
+               "data": {
+                  "type": "array",
+                  "items": {
+                     "$ref": "#/components/schemas/Plan"
+                  }
+               },
+               "count": {
+                  "type": "number",
+                  "example": 30
+               }
+            }
+         },
+         "Moment": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string",
+                  "example": "63dfe16eda233c96fc6e2604"
+               },
+               "title": {
+                  "type": "string",
+                  "example": "My birthday"
+               },
+               "photo": {
+                  "type": "string",
+                  "example": "3820175937533.jpg"
+               },
+               "date": {
+                  "type": "number",
+                  "example": 1677517089217
+               },
+               "location": {
+                  "type": "string",
+                  "example": "Location"
+               },
+               "createdAt": {
+                  "type": "number",
+                  "example": 1677517089217
+               },
+               "tag": {
+                  "type": "string",
+                  "example": "tag"
+               }
+            }
+         },
+         "Moments": {
+            "type": "object",
+            "properties": {
+               "data": {
+                  "type": "array",
+                  "items": {
+                     "$ref": "#/components/schemas/Moment"
+                  }
+               },
+               "tagsForFilter": {
+                  "type": "array",
+                  "items": {
+                     "type": "string",
+                     "example": "tags"
+                  }
+               },
+               "count": {
+                  "type": "number",
+                  "example": 30
+               }
+            }
+         },
+         "User": {
+            "type": "object",
+            "properties": {
+               "name": {
+                  "type": "string",
+                  "example": "Tom"
+               },
+               "surname": {
+                  "type": "string",
+                  "example": "Peterson"
+               },
+               "username": {
+                  "type": "string",
+                  "example": "tommy_gun"
+               },
+               "avatar": {
+                  "type": "string",
+                  "example": "1677458538916.jpg"
+               },
+               "momentsCount": {
+                  "type": "number",
+                  "example": 6
+               },
+               "plansCount": {
+                  "type": "number",
+                  "example": 3
+               },
+               "notesCount": {
+                  "type": "number",
+                  "example": 1
+               }
+            }
+         }
+      }
+   }
+}

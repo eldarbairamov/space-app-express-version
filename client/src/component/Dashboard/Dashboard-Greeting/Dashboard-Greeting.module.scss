@@ -1,0 +1,49 @@
+@import "src/style/configuration";
+
+.DashboardGreeting {
+   font-size: 35px;
+   font-weight: bold;
+   color: #9d9d9d;
+   position: relative;
+   top: 20px;
+   transition: $transition;
+   width: 100%;
+
+   .hello, .how_are_you {
+      font-family: 'Caveat', cursive;
+   }
+
+   .top_line {
+      @extend %flex-align-justify;
+      gap: 10px;
+   }
+
+   .hello {
+      font-size: 45px;
+   }
+
+   .username {
+      color: #9d9d9d;
+   }
+
+   .how_are_you {
+      @extend %flex-align-justify;
+      font-size: 27px;
+      width: 100%;
+   }
+
+   span:nth-child(2) {
+      @extend %flex-align-justify-column;
+
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .DashboardGreeting {
+      font-size: 30px;
+
+      .hello {
+         font-size: 40px;
+      }
+   }
+}

@@ -1,0 +1,34 @@
+@import "src/style/configuration";
+
+.MomentPage {
+   @extend %flex-align-justify-column;
+   width: 85vw;
+   height: calc(100vh - 170px);
+   background: var(--second-bg);
+   border-radius: 10px;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   transition: $transition;
+
+   ::-webkit-scrollbar-track {
+      background: transparent;
+   }
+}
+
+@media screen and (max-height: 800px) {
+   .MomentPage {
+      height: 800px;
+      margin: 50px 0 50px 0;
+   }
+}
+
+@media screen and (max-width: 550px) {
+   .MomentPage {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .MomentPage {
+      width: 95vw;
+   }
+}

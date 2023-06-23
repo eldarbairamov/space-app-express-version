@@ -1,0 +1,31 @@
+%light-bg {
+   background-image: url("/background-light.jpeg");
+   background-size: cover;
+   background-position: center;
+}
+
+%dark-bg {
+   background-image: url("/background-dark.jpeg");
+   background-size: cover;
+   background-position: center;
+}
+
+%flex-align {
+   display: flex;
+   align-items: center;
+}
+
+%flex-align-justify {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+%flex-align-justify-column {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+$transition: .2s;

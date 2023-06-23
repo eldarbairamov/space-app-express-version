@@ -1,0 +1,43 @@
+@import "src/style/configuration";
+
+.ChangeEmailMessage {
+   @extend %flex-align-justify-column;
+   width: 80vw;
+   height: calc(100vh - 170px);
+   transition: $transition;
+
+   .message {
+      background: var(--second-bg);
+      padding: 50px;
+      border-radius: 15px;
+      width: 600px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+
+      div:nth-child(2) {
+         font-size: 20px;
+      }
+
+      svg {
+         color: #90be8e;
+      }
+
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .ChangeEmailMessage {
+      .message {
+         width: 450px;
+      }
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .ChangeEmailMessage {
+      width: 95vw;
+
+      .message {
+         width: 95vw;
+      }
+   }
+}

@@ -1,0 +1,11 @@
+@import "src/style/configuration";
+
+.body {
+   @extend %flex-align-justify-column;
+   transition: $transition;
+   min-height: calc(100vh - 70px);
+}
+
+.image_loader {
+   display: none;
+}

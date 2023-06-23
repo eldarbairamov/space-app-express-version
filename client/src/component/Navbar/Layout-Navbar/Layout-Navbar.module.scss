@@ -1,0 +1,116 @@
+@import "src/style/configuration";
+
+%link {
+   @extend %flex-align-justify;
+   color: var(--main-font);
+   text-decoration: none;
+   padding: 10px;
+   width: 80px;
+   height: 40px;
+   transition: .2s;
+}
+
+.LayoutNavbar {
+   @extend %flex-align-justify;
+   height: 70px;
+   width: 85vw;
+   margin: 0 auto;
+   background: var(--second-bg);
+   border-radius: 0 0 10px 10px;
+   position: relative;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   transition: $transition;
+
+   .logo {
+      position: absolute;
+      left: 35px;
+   }
+
+   .navigation {
+      @extend %flex-align;
+      gap: 10px;
+   }
+
+   .dashboard_link {
+      a {
+         @extend %flex-align;
+         color: var(--button-font);
+         padding: 10px 20px;
+         background: var(--button-bg);
+         text-decoration: none;
+         height: 40px;
+         border-radius: 5px;
+         transition: .2s;
+      }
+
+      a[class = 'active'] {
+         background: #17494D;
+      }
+   }
+
+   .notes_link {
+      a {
+         @extend %link;
+
+         &:hover {
+            color: var(--notes-color);
+         }
+      }
+
+      a[class = 'active'] {
+         color: var(--notes-color);
+         border-bottom: 4px solid var(--notes-color);
+      }
+   }
+
+   .plans_link {
+      a {
+         @extend %link;
+
+         &:hover {
+            color: var(--plans-color);
+         }
+      }
+
+      a[class = 'active'] {
+         color: var(--plans-color);
+         border-bottom: 4px solid var(--plans-color);
+      }
+   }
+
+   .moments_link {
+      a {
+         @extend %link;
+
+         &:hover {
+            color: var(--moments-color);
+         }
+      }
+
+      a[class = 'active'] {
+         color: var(--moments-color);
+         border-bottom: 4px solid var(--moments-color);
+      }
+   }
+
+   .logout {
+      display: flex;
+      gap: 20px;
+      position: absolute;
+      right: 35px;
+      cursor: pointer;
+      transition: .2s;
+
+      &:hover {
+         filter: var(--icon-hover);
+         -webkit-filter: var(--icon-hover);
+      }
+   }
+
+}
+
+@media screen and (max-width: 550px) {
+   .LayoutNavbar {
+      width: 450px;
+   }
+}

@@ -1,0 +1,35 @@
+@import "src/style/configuration";
+
+.TaskHeader {
+   @extend %flex-align-justify;
+   position: relative;
+   height: 50px;
+   width: 100%;
+   border-bottom: 2px solid var(--decorative-grey);
+   transition: $transition;
+
+   .plan_date {
+      @extend %flex-align-justify;
+      position: absolute;
+      font-size: 13px;
+      right: 30px;
+      font-weight: 500;
+      color: var(--second-font);
+      text-align: center;
+   }
+
+}
+
+@media screen and (max-width: 499px) {
+   .TaskHeader {
+      gap: 20px;
+
+      .plan_date {
+         position: static;
+      }
+
+      p {
+         width: 500px;
+      }
+   }
+}

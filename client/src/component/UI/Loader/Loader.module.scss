@@ -1,0 +1,18 @@
+@import "src/style/configuration";
+
+.Loader {
+   @extend %flex-align-justify-column;
+   gap: 20px;
+
+   padding: 50px 100px;
+   border-radius: 15px;
+
+   p {
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+      color: whitesmoke;
+      // color: var(--main-font);
+      width: 200px;
+   }
+
+}

@@ -1,0 +1,14 @@
+@import "src/style/configuration";
+
+.LoginPage {
+   @extend %flex-align-justify-column;
+   height: 100vh;
+   gap: 100px;
+   transition: $transition;
+}
+
+@media screen and (max-height: 800px) {
+   .LoginPage {
+      height: 800px;
+   }
+}

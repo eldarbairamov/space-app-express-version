@@ -1,0 +1,14 @@
+@import "src/style/configuration";
+
+.TaskList {
+   height: calc(100% - 150px);
+   width: 100%;
+   overflow-y: scroll;
+   padding-bottom: 30px;
+
+   .task_list {
+      @extend %flex-align-justify-column;
+      transition: $transition;
+      margin: 0 auto;
+   }
+}

@@ -1,0 +1,16 @@
+@import "src/style/configuration";
+
+.AuthSettings {
+   @extend %flex-align-justify-column;
+   gap: 5px;
+
+   p {
+      color: var(--second-font);
+      cursor: pointer;
+
+      &:hover {
+         color: var(--font-hover);
+      }
+   }
+
+}

@@ -1,0 +1,108 @@
+@import "src/style/configuration";
+
+.MomentItem {
+   @extend %flex-align-justify;
+   width: calc(100% / 3 - 14px);
+   height: 350px;
+   position: relative;
+   border-radius: 10px;
+   overflow: hidden;
+   cursor: pointer;
+   background: var(--item-bg);
+   transition: .3s;
+
+   &:hover {
+      filter: brightness(92%);
+      -webkit-filter: brightness(92%);
+   }
+
+   .photo_background {
+      position: absolute;
+      width: 800px;
+      filter: blur(10px) contrast(80%) brightness(80%);
+      -webkit-filter: blur(10px) contrast(80%) brightness(80%);
+   }
+
+   .photo {
+      width: 230px;
+      position: absolute;
+      filter: contrast(90%);
+      -webkit-filter: contrast(90%);
+      border-radius: 20px;
+   }
+
+   .no_image {
+      position: absolute;
+      width: 70px;
+   }
+
+   .title {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+      color: var(--button-font);
+      background: var(--button-bg);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+   }
+
+   .date_and_location_wrapper {
+      display: flex;
+      gap: 10px;
+
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+
+      .date, .location {
+         color: var(--button-font);
+         background: var(--button-bg);
+         padding: 5px 10px;
+         border-radius: 5px;
+         font-size: 14px;
+         cursor: pointer;
+      }
+   }
+
+   .tags_wrapper {
+      @extend %flex-align;
+      gap: 10px;
+
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+
+      .tag {
+         color: var(--button-font);
+         background: var(--moments-color);
+         padding: 5px 10px;
+         border-radius: 5px;
+         font-size: 14px;
+      }
+   }
+}
+
+
+@media screen and (max-width: 1600px) {
+   .MomentItem {
+      width: calc(100% / 2 - 15px);
+   }
+}
+
+@media screen and (max-width: 900px) {
+   .MomentItem {
+      width: 100%;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .MomentItem {
+      .location {
+         display: none;
+      }
+   }
+}
+
+

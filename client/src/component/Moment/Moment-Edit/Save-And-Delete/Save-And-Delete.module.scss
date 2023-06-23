@@ -1,0 +1,29 @@
+@import "src/style/configuration";
+
+.SaveAndDelete {
+   @extend %flex-align-justify-column;
+   align-items: end;
+   gap: 10px;
+   position: absolute;
+   right: 25px;
+   top: 25px;
+   z-index: 1;
+
+   .save_moment, .delete_moment {
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 15px;
+      cursor: pointer;
+      width: 90px;
+      text-align: center;
+   }
+
+   .save_moment {
+      background: var(--button-bg);
+   }
+
+   .delete_moment {
+      background: indianred;
+   }
+}

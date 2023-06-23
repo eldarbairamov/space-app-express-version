@@ -1,0 +1,46 @@
+@import "src/style/configuration";
+
+.DashboardPage {
+   @extend %flex-align-justify-column;
+   width: 85vw;
+   height: calc(100vh - 170px);
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   background: var(--second-bg);
+   border-radius: 10px;
+   position: relative;
+   transition: $transition;
+
+   .top {
+      @extend %flex-align-justify-column;
+      gap: 20px;
+      height: 65%;
+      width: 100%;
+      position: relative;
+   }
+
+   .bottom {
+      @extend %flex-align;
+      justify-content: space-evenly;
+      height: 35%;
+      width: 100%;
+   }
+}
+
+@media screen and (max-height: 800px) {
+   .DashboardPage {
+      margin: 50px 0 50px 0;
+      height: 800px;
+   }
+}
+
+@media screen and (max-width: 550px) {
+   .DashboardPage {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .DashboardPage {
+      width: 95vw;
+   }
+}

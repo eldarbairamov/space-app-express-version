@@ -1,0 +1,29 @@
+@import "src/style/configuration";
+
+.NoteListAdaptive {
+   overflow-y: scroll;
+   height: calc(100% - 50px);
+   width: 100%;
+
+   .note_list_adaptive {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 20px;
+      width: 100%;
+      position: relative;
+      margin: 0 auto;
+      padding: 20px;
+   }
+}
+
+.no_notes_wrapper {
+   @extend %flex-align-justify-column;
+   height: 100%;
+   width: 100%;
+
+   p {
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+   }
+}

@@ -1,0 +1,58 @@
+@import "src/style/configuration";
+
+.SettingsPage {
+   @extend %flex-align-justify;
+   gap: 60px;
+   width: 85vw;
+   min-height: calc(100vh - 170px);
+   transition: $transition;
+
+   .left_side {
+      @extend %flex-align-justify-column;
+      position: relative;
+      width: 500px;
+      height: 650px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+      background: var(--second-bg);
+      border-radius: 10px;
+   }
+
+   .right_side {
+      @extend %flex-align-justify-column;
+   }
+}
+
+
+@media screen and (max-width: 1300px) {
+   .SettingsPage {
+      flex-direction: column;
+      align-items: center;
+
+      margin-top: 50px;
+      margin-bottom: 50px;
+   }
+}
+
+
+@media screen and (max-width: 600px) {
+   .SettingsPage {
+      .left_side {
+         width: 450px;
+      }
+   }
+}
+
+@media screen and (max-height: 800px) {
+   .SettingsPage {
+      margin: 50px 0 50px 0;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .SettingsPage {
+
+      .left_side {
+         width: 95vw;
+      }
+   }
+}

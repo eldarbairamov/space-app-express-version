@@ -1,0 +1,23 @@
+@import "src/style/configuration";
+
+.wrapper {
+   position: absolute;
+   left: 30px;
+
+   .BackIcon {
+      @extend %flex-align-justify;
+      cursor: pointer;
+      transition: .2s;
+
+      &:hover {
+         filter: var(--icon-hover);
+         -webkit-filter: var(--icon-hover);
+      }
+   }
+}
+
+.wrapper[data-bg='true'] {
+   color: var(--button-font);
+   border-radius: 5px;
+   background: var(--button-bg);
+}

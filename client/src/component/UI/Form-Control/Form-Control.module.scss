@@ -1,0 +1,70 @@
+@import "src/style/configuration";
+
+.FormControl {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   gap: 15px;
+   transition: $transition;
+
+   input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--main-font);
+      width: 90%;
+      height: 100%;
+   }
+
+   label {
+      color: var(--second-font);
+   }
+
+   .label_and_star {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+   }
+
+   .input_field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 25px;
+      width: 96%;
+      border-bottom: 1px solid var(--input-border);
+      margin: 0 auto;
+   }
+
+   .input_field[data-error='true'] {
+      border-bottom: 2px solid #df8281;
+   }
+
+
+   .password_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+         color: var(--second-font);
+         cursor: pointer;
+         transition: .3s;
+
+         &:hover {
+            color: var(--font-hover);
+
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .FormControl {
+      label {
+         width: 150px;
+      }
+   }
+}
+
+

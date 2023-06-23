@@ -1,0 +1,59 @@
+@import "src/style/configuration";
+
+.NotesPage {
+   @extend %flex-align-justify;
+   gap: 20px;
+   width: 85vw;
+   height: calc(100vh - 170px);
+   transition: $transition;
+
+   ::-webkit-scrollbar-track {
+      background: transparent;
+   }
+
+
+}
+
+.NotesPageAdaptive {
+   @extend %flex-align-justify-column;
+   width: 85vw;
+   background: var(--second-bg);
+   border-radius: 10px;
+   height: calc(100vh - 170px);
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   position: relative;
+   transition: $transition;
+
+   ::-webkit-scrollbar-track {
+      background: transparent;
+   }
+
+}
+
+@media screen and (max-height: 800px) {
+   .NotesPage {
+      height: 800px;
+      margin: 50px 0 50px 0;
+   }
+
+   .NotesPageAdaptive {
+      margin: 50px 0 50px 0;
+      height: 800px;
+   }
+}
+
+@media screen and (max-width: 550px) {
+   .NotesPage {
+      width: 450px;
+   }
+
+   .NotesPageAdaptive {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .NotesPageAdaptive {
+      width: 95vw;
+   }
+}

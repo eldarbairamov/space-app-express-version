@@ -1,0 +1,51 @@
+@import "src/style/configuration";
+
+.NoteEditPage {
+   @extend %flex-align-justify-column;
+   width: 60vw;
+   height: calc(100vh - 170px);
+   background: var(--second-bg);
+   border-radius: 10px;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   position: relative;
+   transition: $transition;
+
+   .header {
+      @extend %flex-align-justify;
+      border-bottom: 2px solid var(--decorative-grey);
+      width: 100%;
+      height: 50px;
+      position: relative;
+   }
+
+   .no_notes_wrapper {
+      height: 100%;
+   }
+
+}
+
+@media screen and (max-width: 1000px) {
+   .NoteEditPage {
+      width: 85vw;
+   }
+}
+
+@media screen and (max-height: 800px) {
+   .NoteEditPage {
+      height: 800px;
+      margin: 50px 0 50px 0;
+   }
+}
+
+@media screen and (max-width: 550px) {
+   .NoteEditPage {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .NoteEditPage {
+      width: 95vw;
+   }
+}
+

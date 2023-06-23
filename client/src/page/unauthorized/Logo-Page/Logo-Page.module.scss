@@ -1,0 +1,34 @@
+@import "src/style/configuration";
+
+.WelcomePage {
+   @extend %flex-align-justify-column;
+   min-height: 100vh;
+   transition: $transition;
+
+   div:nth-child(1) {
+      cursor: pointer;
+   }
+
+   .description {
+      display: flex;
+      gap: 10px;
+
+      p {
+         margin-top: 20px;
+         bottom: 40vh;
+         font-family: 'Caveat', cursive;
+         font-size: 30px;
+      }
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .WelcomePage {
+      .description {
+         p {
+            font-size: 25px;
+         }
+      }
+   }
+}
+

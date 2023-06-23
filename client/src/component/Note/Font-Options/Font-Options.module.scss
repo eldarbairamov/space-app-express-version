@@ -1,0 +1,19 @@
+@import "src/style/configuration";
+
+.FontOptions {
+   @extend %flex-align-justify;
+   position: absolute;
+   right: 30px;
+   gap: 10px;
+   cursor: pointer;
+
+   .font_img {
+      transition: .2s;
+   }
+
+   .font_img:hover {
+      filter: var(--icon-hover);
+      -webkit-filter: var(--icon-hover);
+   }
+
+}

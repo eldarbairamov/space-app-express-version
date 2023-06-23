@@ -1,0 +1,24 @@
+@import "src/style/configuration";
+
+.ChangeEmailForm {
+   @extend %flex-align-justify-column;
+   gap: 40px;
+   padding: 50px;
+   width: 500px;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   background: var(--second-bg);
+   border-radius: 10px;
+   transition: $transition;
+}
+
+@media screen and (max-width: 600px) {
+   .ChangeEmailForm {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .ChangeEmailForm {
+      width: 95vw;
+   }
+}

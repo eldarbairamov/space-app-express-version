@@ -1,0 +1,12 @@
+.SettingsIcon {
+   position: absolute;
+   left: 30px;
+   top: 20px;
+   cursor: pointer;
+   transition: .2s;
+
+   &:hover {
+      filter: var(--icon-hover);
+      -webkit-filter: var(--icon-hover);
+   }
+}

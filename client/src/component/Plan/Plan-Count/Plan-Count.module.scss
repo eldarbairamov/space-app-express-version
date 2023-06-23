@@ -1,0 +1,46 @@
+@import "src/style/configuration";
+
+.PlanCount {
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   flex-direction: column;
+   height: 50%;
+   width: 20%;
+   transition: $transition;
+
+   span {
+      font-size: 20px;
+      color: var(--main-font);
+   }
+
+   .count_wrapper {
+      @extend %flex-align-justify;
+      background: rgba(61, 141, 174, 0.9);
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+   }
+
+   p {
+      color: whitesmoke;
+      font-size: 18px;
+      font-weight: 500;
+   }
+}
+
+@media screen and (max-width: 750px) {
+   .PlanCount {
+      width: min-content;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .PlanCount {
+      font-size: 25px;
+
+      span {
+         font-size: 17px;
+      }
+   }
+}

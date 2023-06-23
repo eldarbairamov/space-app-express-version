@@ -1,0 +1,29 @@
+@import "src/style/configuration";
+
+.RegistrationForm {
+   @extend %flex-align-justify-column;
+   background: var(--second-bg);
+   padding: 50px;
+   border-radius: 10px;
+   width: 400px;
+   gap: 40px;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   transition: $transition;
+
+   .footer {
+      @extend %flex-align;
+      gap: 10px;
+
+      span:nth-child(2) {
+         color: #d78052;
+         cursor: pointer;
+      }
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .RegistrationForm {
+      width: 95vw;
+   }
+}
+

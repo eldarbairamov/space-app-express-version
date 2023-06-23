@@ -1,0 +1,40 @@
+@import "src/style/configuration";
+
+.EmailConfirmationMessage {
+   @extend %flex-align-justify-column;
+   width: 100vw;
+   height: 100vh;
+   transition: $transition;
+
+   .message {
+      @extend %flex-align-justify-column;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+
+      div:nth-child(2) {
+         font-size: 20px;
+      }
+
+      svg {
+         color: #90be8e;
+      }
+   }
+
+}
+
+@media screen and (max-height: 800px) {
+   .EmailConfirmationMessagePage {
+      height: 800px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .EmailConfirmationMessagePage {
+      width: 95vw;
+
+      .message {
+         width: 95vw;
+      }
+   }
+}

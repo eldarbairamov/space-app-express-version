@@ -1,0 +1,29 @@
+@import "src/style/configuration";
+
+.ActivationForm {
+   @extend %flex-align-justify-column;
+   background: var(--second-bg);
+   padding: 60px;
+   border-radius: 10px;
+   width: 500px;
+   gap: 40px;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.10);
+   transition: $transition;
+
+   .message {
+      text-align: center;
+      font-size: 15px;
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .ActivationForm {
+      width: 450px;
+   }
+}
+
+@media screen and (max-width: 499px) {
+   .ActivationForm {
+      width: 95vw;
+   }
+}
