@@ -12,7 +12,7 @@
 
 <h1 align="center"></h1>
 
-<h3 align="center">Build with :</h3>
+<h3 align="center">Built with :</h3>
 
 ###
 
