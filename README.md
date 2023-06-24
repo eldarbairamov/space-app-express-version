@@ -36,19 +36,13 @@
 
 ###
 
-<br clear="both">
-
 <p align="center">Back-end part of the application is built on Node.js platform using Express.js framework on TypeScript and Mongo database via Mongoose ODM. Also we have Node.js task scheduling tool - Cron Job, that cleans out-of-date login records from the database once a week.<br><br>Front-end part is built with React using TypeScript via Vite and Redux Toolkit state manager. The CSS styles are described using SCSS syntax and features.<br><br>The application can run in Docker containers. All instructions for this are already described in Dockerfile's and Docker Compose.</p>
 
 ###
 
-<br clear="both">
-
 <h3 align="center">Key features :</h3>
 
 ###
-
-<br clear="both">
 
 <p align="center">- Authentication and authorization through JWT<br>- Routing for authorized and unauthorized users<br>- Saving pre-compressed images to the server and deleting them<br>- "Forgot Password" - restore / reset password<br>- Edit user profile<br>- Implemented infinite scroll via Intersection Observer.<br>- Ability to change fonts in Notes section<br>- Theme switcher<br>- Search and filter by content in each section<br>- Adaptive and responsive design</p>
 
