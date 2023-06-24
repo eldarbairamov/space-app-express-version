@@ -1,28 +1,18 @@
-<br clear="both">
-
 <h1 align="center">Space (1.0-beta)</h1>
 
 ###
-
-<br clear="both">
 
 <h3 align="center">Description :</h3>
 
 ###
 
-<br clear="both">
-
 <p align="center">Ukrainian-language diary application. A personal space where the user has the following sections :<br><br>- Notes<br>- Plans / Tasks<br>- Moments - a place to store memories / life moments</p>
 
 ###
 
-<br clear="both">
-
 <h3 align="center">Build with :</h3>
 
 ###
-
-<br clear="both">
 
 <div align="center">
   <img src="https://skillicons.dev/icons?i=html" height="50" alt="html5 logo"  />
