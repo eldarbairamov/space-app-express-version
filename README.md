@@ -1,10 +1,6 @@
 <br clear="both">
 
-<h3 align="center">Space 1.0-beta</h3>
-
-###
-
-<h1 align="center"></h1>
+<h1 align="center">Space (1.0-beta)</h1>
 
 ###
 
@@ -20,15 +16,13 @@
 
 ###
 
-<h1 align="center"></h1>
-
-###
-
 <br clear="both">
 
 <h3 align="center">Build with :</h3>
 
 ###
+
+<br clear="both">
 
 <div align="center">
   <img src="https://skillicons.dev/icons?i=html" height="50" alt="html5 logo"  />
@@ -52,19 +46,9 @@
 
 ###
 
-<h1 align="center"></h1>
-
-###
-
 <br clear="both">
 
 <p align="center">Back-end part of the application is built on Node.js platform using Express.js framework on TypeScript and Mongo database via Mongoose ODM. Also we have Node.js task scheduling tool - Cron Job, that cleans out-of-date login records from the database once a week.<br><br>Front-end part is built with React using TypeScript via Vite and Redux Toolkit state manager. The CSS styles are described using SCSS syntax and features.<br><br>The application can run in Docker containers. All instructions for this are already described in Dockerfile's and Docker Compose.</p>
-
-###
-
-<br clear="both">
-
-<h1 align="center"></h1>
 
 ###
 
