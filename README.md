@@ -1,4 +1,4 @@
-<h1 align="center">Space (1.0-beta)</h1>
+<h1 align="center">Space (1.0-beta) | React + Express.js</h1>
 
 ###
 
