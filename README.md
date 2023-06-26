@@ -38,7 +38,7 @@
 
 ###
 
-<p align="center">Back-end part of the application is built on Node.js platform using Express.js framework on TypeScript and Mongo database via Mongoose ODM. Also we have Node.js task scheduling tool - Cron Job, that cleans out-of-date login records from the database once a week.<br><br>Front-end part is built with React using TypeScript via Vite and Redux Toolkit state manager. The CSS styles are described using SCSS syntax and features.<br><br>The application can run in Docker containers. All instructions for this are already described in Dockerfile's and Docker Compose.</p>
+<p align="center">Back-end part of the application is built on Node.js platform using Express.js framework on TypeScript and Mongo database via Mongoose ODM. Also we have Node.js task scheduling tool - Cron Job, that cleans out-of-date login records from the database once a week.<br><br>Front-end part is built with React using TypeScript via Vite and Redux Toolkit state manager. The CSS styles are defined using SCSS syntax and features.<br><br>The application can run in Docker containers. All instructions for this are already described in Dockerfile's and Docker Compose.</p>
 
 ###
 
