@@ -46,6 +46,6 @@ const start = async () => {
 };
 
 start()
-   .then(() => console.log(`Database is connected. Server started on port ${ configuration.PORT }`))
+   .then(() => console.log(`Database is connected. Server is started on port ${ configuration.PORT }`))
    .catch(e => console.log(e));
 
