@@ -11,7 +11,7 @@ services:
     env_file:
       - backend-express/.env
     environment:
-      - MONGO_URI=mongodb://eldar:eldar010596@db:27017/space-app-express
+      - MONGO_URI=mongodb://eldar:eldar010596@db:27017/space-app
     depends_on:
       - db
     volumes:
