@@ -1,8 +1,7 @@
 {
-   "name": "backend-express",
+   "name": "server",
    "version": "1.0.0",
-   "description": "Final fullstack project for Okten School",
-   "author": "Eldar Bayramov",
+   "author": "Eldar Bairamov",
    "private": true,
    "keywords": [],
    "license": "ISC",

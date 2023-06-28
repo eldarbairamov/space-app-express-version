@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backend-express/client:/app/client
+      - ./server/client:/app/client
 
   db:
     image: mongo:latest
@@ -29,7 +29,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=eldar
       - MONGO_INITDB_ROOT_PASSWORD=eldar010596
     volumes:
-      - ./backend-express/mongo_db:/data/db
+      - ./server/mongo_db:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
   nginx:
@@ -40,4 +40,4 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./frontend/dist:/usr/share/nginx/html
+      - ./client/dist:/usr/share/nginx/html
