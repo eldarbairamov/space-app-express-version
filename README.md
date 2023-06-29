@@ -51,3 +51,8 @@
 <p align="center">- Authentication and authorization through JWT<br>- Account activation<br>- E-Mail service<br>- Routing for authorized and unauthorized users<br>- Saving pre-compressed images to the server and deleting them<br>- "Forgot Password" - reset password<br>- Edit user profile<br>- Implemented infinite scroll via Intersection Observer.<br>- Ability to change fonts in Notes section<br>- Theme switcher<br>- Search and filter by content in each section<br>- Adaptive and responsive design</p>
 
 ###
+
+<h1 align="center"></h1>
+<h3 align="center">Video preview :</h3>
+
+[<img src="https://i.ytimg.com/vi/RUUxV8lsMEM/maxresdefault.jpg" width="100%">](https://youtu.be/RUUxV8lsMEM "Space")
