@@ -25,6 +25,8 @@
   <img width="5" />
   <img src="https://skillicons.dev/icons?i=react" height="50" alt="react logo"  />
   <img width="5" />
+  <img src="https://skillicons.dev/icons?i=vite" height="50" alt="vite logo"  />
+  <img width="5" />
   <img src="https://skillicons.dev/icons?i=redux" height="50" alt="redux logo"  />
   <img width="5" />
   <img src="https://skillicons.dev/icons?i=nodejs" height="50" alt="nodejs logo"  />
@@ -34,6 +36,8 @@
   <img src="https://skillicons.dev/icons?i=express" height="50" alt="express logo"  />
   <img width="5" />
   <img src="https://skillicons.dev/icons?i=docker" height="50" alt="docker logo"  />
+  <img width="5" />
+  <img src="https://skillicons.dev/icons?i=nginx" height="50" alt="nginx logo"  />
 </div>
 
 ###
